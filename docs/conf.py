@@ -23,6 +23,7 @@ from jinja2.filters import FILTERS
 from sphinx_gallery import scrapers
 from sphinx_gallery.sorting import ExampleTitleSortKey
 
+from napari.components import LayerList
 import napari
 from napari._version import __version_tuple__
 
@@ -201,7 +202,6 @@ napoleon_custom_sections = [('Events', 'params_style')]
 
 
 def reset_napari(gallery_conf, fname):
-    import napari
     from napari.settings import get_settings
     from qtpy.QtWidgets import QApplication
 
