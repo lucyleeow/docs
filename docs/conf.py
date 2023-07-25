@@ -201,6 +201,7 @@ napoleon_custom_sections = [('Events', 'params_style')]
 
 
 def reset_napari(gallery_conf, fname):
+    import napari
     from napari.settings import get_settings
     from qtpy.QtWidgets import QApplication
 
@@ -211,6 +212,11 @@ def reset_napari(gallery_conf, fname):
     # (scripts work when run normally) without blocking example execution by
     # sphinx-gallery. (from qtgallery)
     QApplication.exec_ = lambda _: None
+
+    # Ensure all viewers are closed
+    app = napari.qt.get_app()
+    napari.Viewer.close_all()
+    app.processEvents()
 
 
 def napari_scraper(block, block_vars, gallery_conf):
